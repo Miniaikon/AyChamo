@@ -2,6 +2,7 @@
 
 namespace Blog\Http\Controllers;
 use Illuminate\Database\Eloquent\Model;
+use App\Post;
 use Illuminate\Http\Request;
 use Blog\Http\Requests;
 use Blog\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-         $users = \Blog\Notice::paginate(5);
+         $users = \Blog\Notice::orderBy('created_at', 'desc')->paginate(5);
 
         return view('index',compact('users'));
     }
