@@ -18,7 +18,7 @@ glyphicon glyphicon-pencil'])!!}
 		</div>
 	@endif
 		<h1><a style="text-decoration:none;" href="#">{{$notice->titulo}}</a></h1>
-		<small><span class="glyphicon glyphicon-user"></span> {{$notice->autor}} | <span class="glyphicon glyphicon-calendar"></span> {{$notice->created_at}} </small> | <span class="glyphicon glyphicon-th-list"></span> {{$notice->cate}}</small><hr>
+		<small><span class="glyphicon glyphicon-user"></span> {{$notice->autor}} | <span class="glyphicon glyphicon-calendar"></span> {{$notice->created_at}} | <span class="glyphicon glyphicon-th-list"></span> {{$notice->cate}}</small><hr>
 		{!!substr($notice->content,0,1000)!!}
 		<hr>
 		<footer>  

@@ -3,6 +3,7 @@
 @section('content')
 @include('alerts.request')
 	{!!Html::script('ckeditor/ckeditor.js')!!}
+	<article>
 	{!!Form::model($notice,['route'=>['notice.update',$notice->id],'method'=>'PUT'])!!}
 		<div class="form-group">
 			<label for="" class="sr-only">Titulo</label>
@@ -14,9 +15,17 @@
 			{!!Html::script('ck.js')!!}
 		</div>
 		<div class="form-group">
-			<label for="" class="sr-only">Autor</label>
-			{!!Form::text('autor', null,['class'=>'form-control', 'placeholder'=>'autor'])!!}
+			<label class="sr-only">Categoría</label><br>
+			<center>
+				{!!Form::radio('cate', 'Humor')!!} Humor | 
+				{!!Form::radio('cate', 'Noticias')!!} Noticias | 
+				{!!Form::radio('cate', 'Imagenes')!!} Imagenes | 
+				{!!Form::radio('cate', 'Vídeos')!!} Videos | 
+				{!!Form::radio('cate', 'Reseñas')!!} Reseñas | 
+				{!!Form::radio('cate', 'Otros')!!} Otros
+			  </center>
 		</div>
 		{!!Form::submit('Publicar',['class'=>'btn btn-linkedin btn-block'], $secure = null)!!}
 	{!!Form::close()!!}
+	</article>
 @endsection

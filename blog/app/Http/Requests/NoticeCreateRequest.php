@@ -26,7 +26,7 @@ class NoticeCreateRequest extends Request
         return [
             'titulo' => 'required',
             'content' => 'required',
-            'autor' => 'required',
+            'cate' => 'required',
         ];
     }
 }

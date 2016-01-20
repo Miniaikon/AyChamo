@@ -17,6 +17,7 @@ class CreateNoticesTable extends Migration
             $table->string('titulo');
             $table->string('content');
             $table->string('autor');
+            $table->string('cate');
             $table->timestamps();
         });
     }

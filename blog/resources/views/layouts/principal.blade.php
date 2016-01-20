@@ -82,10 +82,17 @@
 	<div class="row container" style="margin-left: 3%">
 
 		<section class="col-md-8">
+			@if(Auth::user())
+			<div class="col-md-12" id="menu">
+				<div class="col-md-1"><a href="/notice/create" class="btn btn-primary" title="Nuevo articulo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a></div>
+			<div class="col-md-11"></div>
+			</div><br><hr>
+			@endif
+
 			@include('alerts.errors')
 			@include('alerts.request')
 			@include('alerts.success')
-				 @yield('content')
+			@yield('content')
 		</section>
 
 		<aside class="col-md-4">
@@ -99,11 +106,12 @@
 		    <article>
 		    	<h4>Categorías</h4><hr>
 				<div class="list-group">
-				  <a href="#" class="list-group-item">Noticia</a>
-				  <a href="#" class="list-group-item">Vídeos</a>
-				  <a href="#" class="list-group-item">Imagenes</a>
-				  <a href="#" class="list-group-item">Reseñas</a>
-				  <a href="#" class="list-group-item">Otros</a>
+				  <a href="/noticia" class="list-group-item">Noticia</a>
+				  <a href="/humor" class="list-group-item">Humor</a>
+				  <a href="/video" class="list-group-item">Vídeos</a>
+				  <a href="/imagen" class="list-group-item">Imagenes</a>
+				  <a href="/resena" class="list-group-item">Reseñas</a>
+				  <a href="/otro" class="list-group-item">Otros</a>
 				</div>
 		    </article><br><br><!-- Categorías -->
 
@@ -112,39 +120,14 @@
 		    	<!-- Noticia -->
 		    	<div class="media">
 				  <div class="media-left">
-				    <a href="#">
-				      <img class="media-object" src="../../img/64x64.png" alt="...">
-				    </a>
 				  </div>
+				  @foreach($users as $notice)
 				  <div class="media-body">
-				    <h4 class="media-heading">Media heading</h4>
-				    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, dolores porro fuga sapiente voluptatibus ...
+				    <h4 class="media-heading">{{$notice->titulo}}</h4>
+				    {!!substr($notice->content,0,100)!!}...
 				  </div>
+				  @endforeach
 				</div><hr>
-				<!-- Noticia -->
-				<div class="media">
-				  <div class="media-left">
-				    <a href="#">
-				      <img class="media-object" src="../../img/64x64.png" alt="...">
-				    </a>
-				  </div>
-				  <div class="media-body">
-				    <h4 class="media-heading">Media heading</h4>
-				    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, dolores porro fuga sapiente voluptatibus ...
-				  </div>
-				</div><hr>
-				<!-- Noticia -->
-				<div class="media">
-				  <div class="media-left">
-				    <a href="#">
-				      <img class="media-object" src="../../img/64x64.png" alt="...">
-				    </a>
-				  </div>
-				  <div class="media-body">
-				    <h4 class="media-heading">Media heading</h4>
-				    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, dolores porro fuga sapiente voluptatibus ...
-				  </div>
-				</div>
 		    </article>
 		</aside>
 	</div><br><br><br><br>

@@ -56,7 +56,8 @@ class NoticeController extends Controller
 
         $notice->titulo = $request->titulo;
         $notice->content = $request->content;
-        $notice->autor = $request->autor;
+        $notice->autor = Auth::user()->name;
+        $notice->cate = $request->cate;
 
         $notice->save();
         Session::flash('message','Post Publicado correctamente');
