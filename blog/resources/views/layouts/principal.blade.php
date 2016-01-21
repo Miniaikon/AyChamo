@@ -45,7 +45,7 @@
 			{!!Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingresa la contraseña'])!!}
 		</div>
 		{!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
-	{!!Form::close()!!}
+	{!!Form::close()!!}<br><br>
 	  	</div>
 	  </div>
 	</div><!-- Collapse -->
@@ -72,7 +72,7 @@
 	</div>
 	<header class="col-md-12 container">
 		<div class="col-md-4">
-			<img src="../../img/logo.png" alt="">
+			<a href="/"><img src="../../img/logo.png" alt=""></a>
 		</div>
 		<div class="col-md-8">
 			<img class="thumbnail" src="../../img/add.png" style="width:90%; height:90%; align:center; margin-top:5%; margin-left:5%" alt="">
@@ -115,20 +115,7 @@
 				</div>
 		    </article><br><br><!-- Categorías -->
 
-		    <article>
-		    	<h4>Últimos post's</h4>
-		    	<!-- Noticia -->
-		    	<div class="media">
-				  <div class="media-left">
-				  </div>
-				  @foreach($users as $notice)
-				  <div class="media-body">
-				    <h4 class="media-heading">{{$notice->titulo}}</h4>
-				    {!!substr($notice->content,0,100)!!}...
-				  </div>
-				  @endforeach
-				</div><hr>
-		    </article>
+		    
 		</aside>
 	</div><br><br><br><br>
 	<footer class="col-md-12" style="background: #1AB7EA;">

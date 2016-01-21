@@ -34,6 +34,8 @@ class NoticeController extends Controller
         return view('index',compact('users'));
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -70,9 +72,11 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        $users = \Blog\Notice::orderBy('created_at', 'desc')->where('id', $id)->get();
+
+        return view('review',compact('users'));
     }
 
     /**

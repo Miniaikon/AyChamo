@@ -21,6 +21,8 @@ Route::get('noticia','FrontController@noticia');
 Route::get('resena','FrontController@resena');
 Route::get('otro','FrontController@otro');
 
+Route::get('review','FrontController@review');
+
 Route::resource('usuario','UsuarioController');
 Route::resource('notice','NoticeController');
 Route::resource('log','LogController');

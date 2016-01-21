@@ -8,8 +8,7 @@
 		<div class="alert alert-info admin col-md-12">
 			<div class="col-md-1">{!!Form::open(['route'=>['notice.destroy', $notice->id], 'method'=>'DELETE'])!!}<button data-toggle="tooltip" title="¿Borra?" data-placement="left" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>{!!Form::close()!!}</div>
 			<div class="col-md-1">
-			{!!link_to_route('notice.edit', $title = '', $parameters = [$notice->id], $attributes = ['title'=>'Editar articulo', 'class'=>'btn btn-warning 
-glyphicon glyphicon-pencil'])!!}
+			{!!link_to_route('notice.edit', $title = '', $parameters = [$notice->id], $attributes = ['title'=>'Editar articulo', 'class'=>'btn btn-warning glyphicon glyphicon-pencil'])!!}
 
 		</div>
 		<div class="col-md-10">
@@ -20,8 +19,7 @@ glyphicon glyphicon-pencil'])!!}
 	@endif
 		<h1>{!!link_to_route('notice.show', $title = $notice->titulo, $parameters = [$notice->id,str_replace(" ","-",$notice->titulo)], $attributes = ['style'=>'text-decoration:none;color:#2c3e50;'], $secure = null)!!}</h1>
 		<small><span class="glyphicon glyphicon-user"></span> {{$notice->autor}} | <span class="glyphicon glyphicon-calendar"></span> {{$notice->created_at}} </small> | <span class="glyphicon glyphicon-th-list"></span> {{$notice->cate}}</small><hr>
-		{!!substr($notice->content,0,1000)!!}... <br>
-		{!!link_to_route('notice.show', $title = 'Seguir leyendo', $parameters = [$notice->id,str_replace(" ","-",$notice->titulo)], $attributes = ['class'=>'btn btn-default pull-right'], $secure = null)!!}
+		{!!$notice->content!!}
 		<hr>
 		<footer>  
 		<center>
@@ -32,5 +30,4 @@ glyphicon glyphicon-pencil'])!!}
 		</footer>
 	</article><br>
 	@endforeach
-	{!!$users->render()!!}
 @endsection
