@@ -46,7 +46,7 @@ class FrontController extends Controller
 
     public function noticia()
     {
-        $users = \Blog\Notice::orderBy('created_at', 'desc')->where('cate', 'Noticias')->paginate(5);
+        $users = \Blog\Notice::orderBy('created_at', 'desc')->where('cate', 'Noticia')->paginate(5);
 
         return view('filter.humor',compact('users'));
     }
@@ -77,10 +77,5 @@ class FrontController extends Controller
         $users = \Blog\Notice::orderBy('created_at', 'desc')->where('cate', 'Otros')->paginate(5);
 
         return view('filter.humor',compact('users'));
-    }
-
-    public function review($id)
-    {
-        return "Funciona!";
     }
 }

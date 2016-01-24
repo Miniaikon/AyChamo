@@ -8,16 +8,9 @@ use Auth;
 use Session;
 use Redirect;
 use Blog\Http\Requests;
-use Blog\Http\Requests\NoticeCreateRequest;
 use Blog\Http\Controllers\Controller;
 
-
-class User extends Model {
-
-    protected $fillable = ['first_name', 'last_name', 'email'];
-
-}
-class NoticeController extends Controller
+class uploadController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -29,9 +22,7 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        $users = \Blog\Notice::paginate(1);
-        $users = $users->orderBy('created_at', 'desc')->get();
-        return view('index',compact('users'));
+        //
     }
 
     /**
@@ -41,7 +32,7 @@ class NoticeController extends Controller
      */
     public function create()
     {
-        return view('notice.nuevo');
+        //
     }
 
     /**
@@ -50,18 +41,9 @@ class NoticeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NoticeCreateRequest $request)
+    public function store(Request $request)
     {
-        $notice = new \Blog\Notice;
-
-        $notice->titulo = $request->titulo;
-        $notice->content = $request->content;
-        $notice->autor = Auth::user()->name;
-        $notice->cate = $request->cate;
-
-        $notice->save();
-        Session::flash('message','Post Publicado correctamente');
-        return redirect('/');
+        //
     }
 
     /**
@@ -83,8 +65,7 @@ class NoticeController extends Controller
      */
     public function edit($id)
     {
-        $notice = \Blog\Notice::find($id);
-        return view('notice.edit',['notice'=>$notice]);
+        //
     }
 
     /**
@@ -94,14 +75,12 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(Request $request, $id)
     {
-        $user = \Blog\Notice::find($id);
+        $user = \Blog\User::find($id);
         $user->fill($request->all());
         $user->save();
-
-        Session::flash('message','Post actualizado');
-        return redirect('/');
+        return 'Listo';
     }
 
     /**
@@ -112,8 +91,6 @@ class NoticeController extends Controller
      */
     public function destroy($id)
     {
-        \Blog\Notice::destroy($id);
-        Session::flash('message','Post borrado correctamente');
-        return Redirect::to('/');
+        //
     }
 }

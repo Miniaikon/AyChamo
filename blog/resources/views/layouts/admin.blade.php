@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
    	<meta charset="utf-8">
    	{!!Html::style('css/font-awesome.css')!!}
@@ -45,7 +45,7 @@
 			{!!Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingresa la contraseña'])!!}
 		</div>
 		{!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
-	{!!Form::close()!!}
+	{!!Form::close()!!}<br><br>
 	  	</div>
 	  </div>
 	</div><!-- Collapse -->
@@ -72,7 +72,7 @@
 	</div>
 	<header class="col-md-12 container">
 		<div class="col-md-4">
-			<img src="../../img/logo.png" alt="">
+			<a href="/"><img src="../../img/logo.png" alt=""></a>
 		</div>
 		<div class="col-md-8">
 			<img class="thumbnail" src="../../img/add.png" style="width:90%; height:90%; align:center; margin-top:5%; margin-left:5%" alt="">
@@ -81,12 +81,14 @@
 
 	<div class="row container" style="margin-left: 3%">
 
-		<section class="col-md-8">
+		<section class="col-md-12">
 			@if(Auth::user())
-			<div class="col-md-12" id="menu">
-				<div class="col-md-1"><a href="/notice/create" class="btn btn-primary" title="Nuevo articulo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a></div>
-			<div class="col-md-11"></div>
-			</div><br><hr>
+				@if(Auth::user()->nivel == 1)
+					<div class="col-md-12" id="menu">
+						<a href="/notice" class="btn btn-default" title="Ver lista de publicaciones"><span class="glyphicon glyphicon-list-alt"></span> Ver en lista</a>
+						<a href="/notice/create" class="btn btn-primary" title="Nuevo articulo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+					</div><br><hr>
+				@endif
 			@endif
 
 			@include('alerts.errors')
@@ -94,42 +96,6 @@
 			@include('alerts.success')
 			@yield('content')
 		</section>
-
-		<aside class="col-md-4">
-			<div class="input-group input-group-lg">
-		      <input type="text" class="form-control" placeholder="Search for...">
-		      <span class="input-group-btn">
-		        <button class="btn btn-vimeo" type="button">Buscar</button>
-		      </span>
-		    </div><br><br><!-- /input-group -->
-
-		    <article>
-		    	<h4>Categorías</h4><hr>
-				<div class="list-group">
-				  <a href="/noticia" class="list-group-item">Noticia</a>
-				  <a href="/humor" class="list-group-item">Humor</a>
-				  <a href="/video" class="list-group-item">Vídeos</a>
-				  <a href="/imagen" class="list-group-item">Imagenes</a>
-				  <a href="/resena" class="list-group-item">Reseñas</a>
-				  <a href="/otro" class="list-group-item">Otros</a>
-				</div>
-		    </article><br><br><!-- Categorías -->
-
-		    <article>
-		    	<h4>Últimos post's</h4>
-		    	<!-- Noticia -->
-		    	<div class="media">
-				  <div class="media-left">
-				  </div>
-				  @foreach($users as $notice)
-				  <div class="media-body">
-				    <h4 class="media-heading">{{$notice->titulo}}</h4>
-				    {!!substr($notice->content,0,100)!!}...
-				  </div>
-				  @endforeach
-				</div><hr>
-		    </article>
-		</aside>
 	</div><br><br><br><br>
 	<footer class="col-md-12" style="background: #1AB7EA;">
 		<center>
