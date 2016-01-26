@@ -3,11 +3,14 @@
 namespace Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Database\Eloquent\Model;
+use Auth;
+use Session;
+use Redirect;
 use Blog\Http\Requests;
 use Blog\Http\Controllers\Controller;
 
-class PerfilController extends Controller
+class UpdatePErfilController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -19,7 +22,7 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        return view('usuario.perfil');
+        //
     }
 
     /**
@@ -27,19 +30,9 @@ class PerfilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function photo()
+    public function create()
     {
-        return view('usuario.photo');
-    }
-    public function upload()
-    {
-         $file = $request->file('img');
- 
-       //obtenemos el nombre del archivo
-       $nombre = $file->getClientOriginalName();
- 
-       //indicamos que queremos guardar un nuevo archivo en el disco local
-       \Storage::disk('local')->put($nombre,  \File::get($file));
+        //
     }
 
     /**
@@ -70,9 +63,9 @@ class PerfilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('usuario.editar');
+        //
     }
 
     /**
@@ -84,7 +77,17 @@ class PerfilController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $user = \Blog\User::find($id);
+        $user->fill([
+            'name' => $request['name'],
+            'lname' => $request['lname'],
+            'fecha_nac' => $request['fecha_nac'],
+            'direccion' => $request['direccion'],
+            ]);
+        $user->save();
+        Session::flash('message','Perfil actualizado');
+        return Redirect('/profile');
     }
 
     /**

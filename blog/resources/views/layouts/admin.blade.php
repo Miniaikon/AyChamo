@@ -53,8 +53,8 @@
 	<div class="col-md-12 text-right" id="barra">
 	<span style="font-size: 24px; color:#fff;">
 	@if(Auth::user())
-            <a style="color:#34495e;text-decoration:none;font-size: 16px;"> 
-                <strong>{!!Auth::user()->name!!}<i class="fa fa-user fa-fw"></i> 
+            <a href="profile" style="color:#34495e;text-decoration:none;font-size: 16px;"> 
+                <strong>{!!Auth::user()->apodo!!}<i class="fa fa-user fa-fw"></i> 
             </a> |
             <a style="color:#34495e;text-decoration:none;font-size: 16px;" href="{!!URL::to('/logout')!!}"><i class="fa fa-sign-out fa-fw"></i> Logout</a> </strong>
             

@@ -1,5 +1,6 @@
 <?php
 namespace Blog;
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -23,7 +24,15 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['id','name','lname','apodo','email','fecha_nac','direccion','password','imagen'];
+
+   
+
+    public function setPathAttribute($imagen){
+        $this->attribute[$imgen] = Carbon::now()->second.$imagen->getClientOriginalName();
+        $name = Carbon::now()->second.$imagen->getClientOriginalName();
+        \Storage::disk('local')->put($name, \File::get($imagen));
+    }
     /**
      * The attributes excluded from the model's JSON form.
      *

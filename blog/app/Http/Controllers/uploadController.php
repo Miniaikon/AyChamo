@@ -4,6 +4,7 @@ namespace Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Farcades\Input;
 use Auth;
 use Session;
 use Redirect;
@@ -41,9 +42,10 @@ class uploadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id, Request $request)
     {
         //
+
     }
 
     /**
@@ -63,7 +65,7 @@ class uploadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
         //
     }
@@ -77,10 +79,18 @@ class uploadController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $file = $request->file('imagen');
+        $Imagen = time().'-'.$file->getClientOriginalNAme();
+        $file->move(public_path().'/fotos', $Imagen);
+
         $user = \Blog\User::find($id);
-        $user->fill($request->all());
+        $user->fill([
+            'imagen' => $Imagen,
+            ]);
         $user->save();
-        return 'Listo';
+        Session::flash('message','Perfil actualizado');
+        return Redirect('/profile');
     }
 
     /**

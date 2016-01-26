@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
    	<meta charset="utf-8">
    	{!!Html::style('css/font-awesome.css')!!}
@@ -12,7 +12,7 @@
 <body>
 	<div class="collapse" id="form">
 	  <div class="col-md-12" id="log">
-	  	<div class="col-md-6">
+	  	<div style="background:#219451;" class="col-md-6">
 	  	<h1>Iniciar Sesion</h1>
 	  		{!!Form::open(['route'=>'log.store', 'method'=>'POST'])!!} 
 					<div class="form-group"> 
@@ -24,17 +24,18 @@
 						{!!Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingresa tu contraseña'])!!} 
 					</div> 
 					{!!Form::submit('Iniciar',['class'=>'btn btn-primary'])!!} 
-				{!!Form::close()!!} 
+				{!!Form::close()!!} <br><br><br><br><br><br>
 
 	  	</div><!-- Formulario -->
+	  	<div class="clearfix visible-xs-block"></div>
 
-	  	<div class="col-md-6">
+	  	<div style="background:#27ae60;" class="col-md-6">
 	  		<h1>Registrarse</h1>
 
 	  		{!!Form::open(['route'=>'usuario.store','method'=>'POST'])!!}
 		<div class="form-group">
-			{!!Form::label('Nombre:')!!}
-			{!!Form::text('name',null,['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario'])!!}
+			{!!Form::label('Apodo:')!!}
+			{!!Form::text('apodo',null,['class'=>'form-control', 'placeholder'=>'Ingresa el nombre de usuario'])!!}
 		</div>
 		<div class="form-group">
 			{!!Form::label('Email:')!!}
@@ -45,16 +46,17 @@
 			{!!Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingresa la contraseña'])!!}
 		</div>
 		{!!Form::submit('registrar',['class'=>'btn btn-primary'])!!}
-	{!!Form::close()!!}
+	{!!Form::close()!!}<br><br>
 	  	</div>
 	  </div>
 	</div><!-- Collapse -->
+	<div class="clearfix visible-md-block visible-xs-block"></div>
 
 	<div class="col-md-12 text-right" id="barra">
 	<span style="font-size: 24px; color:#fff;">
 	@if(Auth::user())
-            <a style="color:#34495e;text-decoration:none;font-size: 16px;"> 
-                <strong>{!!Auth::user()->name!!}<i class="fa fa-user fa-fw"></i> 
+            <a href="/profile" style="color:#34495e;text-decoration:none;font-size: 16px;"> 
+                <strong>{!!Auth::user()->apodo!!}<i class="fa fa-user fa-fw"></i> 
             </a> |
             <a style="color:#34495e;text-decoration:none;font-size: 16px;" href="{!!URL::to('/logout')!!}"><i class="fa fa-sign-out fa-fw"></i> Logout</a> </strong>
             
@@ -72,7 +74,7 @@
 	</div>
 	<header class="col-md-12 container">
 		<div class="col-md-4">
-			<img src="../../img/logo.png" alt="">
+			<a href="/"><img src="../../img/logo.png" alt=""></a>
 		</div>
 		<div class="col-md-8">
 			<img class="thumbnail" src="../../img/add.png" style="width:90%; height:90%; align:center; margin-top:5%; margin-left:5%" alt="">
@@ -83,10 +85,12 @@
 
 		<section class="col-md-8">
 			@if(Auth::user())
-			<div class="col-md-12" id="menu">
-				<div class="col-md-1"><a href="/notice/create" class="btn btn-primary" title="Nuevo articulo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a></div>
-			<div class="col-md-11"></div>
-			</div><br><hr>
+				@if(Auth::user()->nivel == 1)
+					<div class="col-md-12" id="menu">
+						<a href="/notice" class="btn btn-default" title="Ver lista de publicaciones"><span class="glyphicon glyphicon-list-alt"></span> Ver en lista</a>
+						<a href="/notice/create" class="btn btn-primary" title="Nuevo articulo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+					</div><br><hr>
+				@endif
 			@endif
 
 			@include('alerts.errors')
@@ -102,33 +106,31 @@
 		        <button class="btn btn-vimeo" type="button">Buscar</button>
 		      </span>
 		    </div><br><br><!-- /input-group -->
+			
+			@if(Auth::user())
+		    <article>
+		    	<center>
+					<span style="font-size:24px;">{!!Auth::user()->apodo!!}<span><br>
+		    		<img width="70%" class="img-thumbnail img-responsive" src="../../fotos/{!!Auth::user()->imagen!!}" alt="">
+		    </center>
+				<center><a  class="btn btn-warning btn-xs" href="profile/photo"><span class="glyphicon glyphicon-picture"></span> Cambiar foto</a></center><hr>
+				<center><a class="btn btn-default" href="profile"><span class="glyphicon glyphicon-user"></span> Ir a mi perfil</a></center>
+		    </article><br><br>
+		    @endif
 
 		    <article>
 		    	<h4>Categorías</h4><hr>
-				<div class="list-group">
-				  <a href="/noticia" class="list-group-item">Noticia</a>
-				  <a href="/humor" class="list-group-item">Humor</a>
-				  <a href="/video" class="list-group-item">Vídeos</a>
-				  <a href="/imagen" class="list-group-item">Imagenes</a>
-				  <a href="/resena" class="list-group-item">Reseñas</a>
-				  <a href="/otro" class="list-group-item">Otros</a>
-				</div>
+				<ul class="nav nav-stacked">
+				  <li><a href="/noticia" class="list-group-item">Noticia</a></li>
+				  <li><a href="/humor" class="list-group-item">Humor</a></li>
+				  <li><a href="/video" class="list-group-item">Vídeos</a></li>
+				  <li><a href="/imagen" class="list-group-item">Imagenes</a></li>
+				  <li><a href="/resena" class="list-group-item">Reseñas</a></li>
+				  <li><a href="/otro" class="list-group-item">Otros</a></li>
+				</ul>
 		    </article><br><br><!-- Categorías -->
 
-		    <article>
-		    	<h4>Últimos post's</h4>
-		    	<!-- Noticia -->
-		    	<div class="media">
-				  <div class="media-left">
-				  </div>
-				  @foreach($users as $notice)
-				  <div class="media-body">
-				    <h4 class="media-heading">{{$notice->titulo}}</h4>
-				    {!!substr($notice->content,0,100)!!}...
-				  </div>
-				  @endforeach
-				</div><hr>
-		    </article>
+		    
 		</aside>
 	</div><br><br><br><br>
 	<footer class="col-md-12" style="background: #1AB7EA;">

@@ -13,6 +13,9 @@ use Blog\Http\Controllers\Controller;
 
 class UsuarioController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['only'=>'index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +23,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        return view('usuario.perfil');
     }
 
     /**
@@ -42,9 +45,11 @@ class UsuarioController extends Controller
     public function store(UserCreateRequest $request)
     {
         \Blog\User::create([
-            'name' => $request['name'],
+            'apodo' => $request['apodo'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
+            'nivel' => 0,
+            'imagen' => 'default.png',
         ]);
         Session::flash('message','Registrado');
         return Redirect::to('/');
@@ -93,5 +98,13 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function photo()
+    {
+        return view('usuario.photo');
+    }
+    public function photo2()
+    {
+       
     }
 }

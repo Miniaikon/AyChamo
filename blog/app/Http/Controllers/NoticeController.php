@@ -12,15 +12,10 @@ use Blog\Http\Requests\NoticeCreateRequest;
 use Blog\Http\Controllers\Controller;
 
 
-class User extends Model {
-
-    protected $fillable = ['first_name', 'last_name', 'email'];
-
-}
 class NoticeController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth',['only'=>['index','create','store','edit','uldate','destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -29,10 +24,11 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        $users = \Blog\Notice::paginate(1);
-        $users = $users->orderBy('created_at', 'desc')->get();
-        return view('index',compact('users'));
+       $users = \Blog\Notice::orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.lista',compact('users'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -56,7 +52,7 @@ class NoticeController extends Controller
 
         $notice->titulo = $request->titulo;
         $notice->content = $request->content;
-        $notice->autor = Auth::user()->name;
+        $notice->autor = Auth::user()->apodo;
         $notice->cate = $request->cate;
 
         $notice->save();
@@ -70,9 +66,11 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
-        //
+        $users = \Blog\Notice::orderBy('created_at', 'desc')->where('id', $id)->get();
+
+        return view('review',compact('users'));
     }
 
     /**
@@ -114,6 +112,6 @@ class NoticeController extends Controller
     {
         \Blog\Notice::destroy($id);
         Session::flash('message','Post borrado correctamente');
-        return Redirect::to('/');
+        return back()->withInput();
     }
 }
