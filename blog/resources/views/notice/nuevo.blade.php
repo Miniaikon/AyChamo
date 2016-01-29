@@ -17,12 +17,12 @@
 		<div class="form-group">
 			<label class="sr-only">Categoría</label><br>
 			<center>
-			  <input type="radio" name="cate" value="Humor" checked> Humor | 
-			  <input type="radio" name="cate" value="Noticias"> Noticias | 
-			  <input type="radio" name="cate" value="Imagenes"> Imagenes | 
-			  <input type="radio" name="cate" value="Videos"> Videos | 
-			  <input type="radio" name="cate" value="Reseñas"> Reseñas | 
-			  <input type="radio" name="cate" value="Otros"> Otros
+			  	{!!Form::radio('cate', 'Humor')!!} Humor | 
+				{!!Form::radio('cate', 'Noticias')!!} Noticias | 
+				{!!Form::radio('cate', 'Imagenes')!!} Imagenes | 
+				{!!Form::radio('cate', 'Vídeos')!!} Videos | 
+				{!!Form::radio('cate', 'Reseñas')!!} Reseñas | 
+				{!!Form::radio('cate', 'Otros')!!} Otros
 			  </center>
 		</div>
 		{!!Form::submit('Publicar',['class'=>'btn btn-linkedin btn-block'], $secure = null)!!}

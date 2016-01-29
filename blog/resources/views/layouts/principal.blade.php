@@ -12,7 +12,7 @@
 <body>
 	<div class="collapse" id="form">
 	  <div class="col-md-12" id="log">
-	  	<div style="background:#219451;" class="col-md-6">
+	  	<div class="col-md-6">
 	  	<h1>Iniciar Sesion</h1>
 	  		{!!Form::open(['route'=>'log.store', 'method'=>'POST'])!!} 
 					<div class="form-group"> 
@@ -29,7 +29,7 @@
 	  	</div><!-- Formulario -->
 	  	<div class="clearfix visible-xs-block"></div>
 
-	  	<div style="background:#27ae60;" class="col-md-6">
+	  	<div class="col-md-6">
 	  		<h1>Registrarse</h1>
 
 	  		{!!Form::open(['route'=>'usuario.store','method'=>'POST'])!!}

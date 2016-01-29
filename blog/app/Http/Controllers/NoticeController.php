@@ -4,11 +4,11 @@ namespace Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Farcades\Input;
 use Auth;
 use Session;
 use Redirect;
 use Blog\Http\Requests;
-use Blog\Http\Requests\NoticeCreateRequest;
 use Blog\Http\Controllers\Controller;
 
 
@@ -94,9 +94,9 @@ class NoticeController extends Controller
      */
     public function update($id, Request $request)
     {
-        $user = \Blog\Notice::find($id);
-        $user->fill($request->all());
-        $user->save();
+        $notice = \Blog\Notice::find($id);
+        $notice->fill($request->all())->save();
+        // $notice->save();
 
         Session::flash('message','Post actualizado');
         return redirect('/');

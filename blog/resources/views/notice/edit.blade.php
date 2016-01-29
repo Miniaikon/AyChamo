@@ -4,7 +4,7 @@
 @include('alerts.request')
 	{!!Html::script('ckeditor/ckeditor.js')!!}
 	<article>
-	{!!Form::model($notice,['route'=>['notice.update',$notice->id],'method'=>'PUT'])!!}
+	{!!Form::model($notice,['route'=>['notice.update', $notice->id],'method'=>'PUT'])!!}
 		<div class="form-group">
 			<label for="" class="sr-only">Titulo</label>
 			{!!Form::text('titulo', null,['class'=>'form-control', 'placeholder'=>'Titulo de la noticia'])!!}
