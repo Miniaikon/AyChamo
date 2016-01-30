@@ -9,6 +9,7 @@ use Auth;
 use Session;
 use Redirect;
 use Blog\Http\Requests;
+use Blog\Http\Requests\NoticeCreateRequest;
 use Blog\Http\Controllers\Controller;
 
 
@@ -69,8 +70,8 @@ class NoticeController extends Controller
     public function show($id,Request $request)
     {
         $users = \Blog\Notice::orderBy('created_at', 'desc')->where('id', $id)->get();
-
-        return view('review',compact('users'));
+        $comments = \Blog\Comments::orderBy('created_at', 'asc')->where('id_noticia', $id)->get(); 
+        return view('review',compact('users','comments','user'));
     }
 
     /**

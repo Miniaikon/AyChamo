@@ -74,14 +74,14 @@
 	</div>
 	<header class="col-md-12 container">
 		<div class="col-md-4">
-			<a href="/"><img src="../../img/logo.png" alt=""></a>
+			<a href="/"><img width="100%" src="../../img/logo.png" alt=""></a>
 		</div>
 		<div class="col-md-8">
 			<img class="thumbnail" src="../../img/add.png" style="width:90%; height:90%; align:center; margin-top:5%; margin-left:5%" alt="">
 		</div>
 	</header>
 
-	<div class="row container" style="margin-left: 3%">
+	<div class="row container" style="margin-left: auto;margin-right: auto;display:block;">
 
 		<section class="col-md-8">
 			@if(Auth::user())

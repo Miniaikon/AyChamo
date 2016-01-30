@@ -23,6 +23,7 @@ class FrontController extends Controller
     public function index()
     {
          $users = \Blog\Notice::orderBy('created_at', 'desc')->paginate(5);
+         
 
         return view('index',compact('users'));
     }

@@ -35,3 +35,4 @@ Route::resource('usuario','UsuarioController');
 Route::resource('notice','NoticeController');
 Route::resource('log','LogController');
 Route::resource('logout','LogController@logout');
+Route::resource('comment','CommentController');
