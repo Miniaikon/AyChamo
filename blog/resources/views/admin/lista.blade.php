@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+	@if(Auth::users()->nivel == 1)
 <article>
 	<table class="table table-hover table-condensed table-bordered table-responsive">
 		<thead>
@@ -35,4 +36,5 @@
 	</table>
 	{!!$users->render()!!}
 </article>
+@endif
 @endsection

@@ -29,6 +29,7 @@ Route::get('profile/password','PerfilControler@password');
 Route::get('profile/upload','PerfilController@upload');
 Route::get('profile/update','PerfilController@update');
 
+Route::resource('admin','AdminController');
 Route::resource('update','UpdatePErfilController');
 Route::resource('upload','uploadController');
 Route::resource('usuario','UsuarioController');

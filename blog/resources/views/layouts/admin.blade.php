@@ -83,10 +83,13 @@
 
 		<section class="col-md-12">
 			@if(Auth::user())
-				@if(Auth::user()->nivel == 1)
+				@if((Auth::user()->nivel == 1) || (Auth::user()->nivel == 2))
 					<div class="col-md-12" id="menu">
-						<a href="/notice" class="btn btn-default" title="Ver lista de publicaciones"><span class="glyphicon glyphicon-list-alt"></span> Ver en lista</a>
-						<a href="/notice/create" class="btn btn-primary" title="Nuevo articulo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+						<a href="/notice" class="btn btn-pinterest" title="Ver lista de publicaciones"><span class="glyphicon glyphicon-list-alt"></span> Ver en lista</a>
+						<a href="/notice/create" class="btn btn-instagram" title="Nuevo articulo"><span class="glyphicon glyphicon-plus"></span> Nuevo</a>
+						@if(Auth::user()->nivel == 2)
+							<a href="/admin" class="btn btn-google"><span class="glyphicon glyphicon-user"></span> Usuarios</a>
+						@endif
 					</div><br><hr>
 				@endif
 			@endif
