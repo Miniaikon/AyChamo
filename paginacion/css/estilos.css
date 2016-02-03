@@ -1,0 +1,87 @@
+body{
+	background: rgba(0,158,32,1);
+background: -moz-linear-gradient(left, rgba(0,158,32,1) 0%, rgba(10,128,255,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,158,32,1)), color-stop(100%, rgba(10,128,255,1)));
+background: -webkit-linear-gradient(left, rgba(0,158,32,1) 0%, rgba(10,128,255,1) 100%);
+background: -o-linear-gradient(left, rgba(0,158,32,1) 0%, rgba(10,128,255,1) 100%);
+background: -ms-linear-gradient(left, rgba(0,158,32,1) 0%, rgba(10,128,255,1) 100%);
+background: linear-gradient(to right, rgba(0,158,32,1) 0%, rgba(10,128,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009e20', endColorstr='#0a80ff', GradientType=1 );
+}
+
+header{
+	background:#FFF;
+}
+
+.pedazo{
+	background: rgba(0,0,0,0.5);
+}
+
+section{
+	background:#FFF;
+}
+
+.divider{
+	background: rgba(55, 102, 90, 0.6);
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	color: #ecf0f1;
+	padding: 20px;
+	box-shadow: 0px 0px 5px #000;
+}
+
+.presentacion{
+	margin-top: 20px;
+	background: #fff;
+	color: #000;
+	font-size: 16px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	box-shadow: 0px 0px 5px #000;
+}
+
+.title{
+	margin-top: 10px;
+	color: #ecf0f1;
+	margin-bottom: 20px;
+	width: 100%;
+	border-radius: 3px;
+	background: rgba(8,207,214,1);
+background: -moz-linear-gradient(left, rgba(8,207,214,1) 0%, rgba(3,80,163,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(8,207,214,1)), color-stop(100%, rgba(3,80,163,1)));
+background: -webkit-linear-gradient(left, rgba(8,207,214,1) 0%, rgba(3,80,163,1) 100%);
+background: -o-linear-gradient(left, rgba(8,207,214,1) 0%, rgba(3,80,163,1) 100%);
+background: -ms-linear-gradient(left, rgba(8,207,214,1) 0%, rgba(3,80,163,1) 100%);
+background: linear-gradient(to right, rgba(8,207,214,1) 0%, rgba(3,80,163,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#08cfd6', endColorstr='#0350a3', GradientType=1 );
+}
+
+.portfolio{
+	width: 100%;
+	margin-bottom:20px; 
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 0px 1px #000;
+}
+
+.portfolio img{
+	width: 100%;
+	height: 200px;
+}
+.portfolio .boton a:hover{
+	background: #16a085;
+}
+.portfolio .boton a{
+	color: #fff;
+	font-size: 18px;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	background:#1abc9c;
+	text-align: center;
+	padding: 10px;
+	border-radius: 0px 0px 10px 10px;
+	transition:0.2s;
+}
+
+
