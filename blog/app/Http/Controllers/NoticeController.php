@@ -100,7 +100,7 @@ class NoticeController extends Controller
         // $notice->save();
 
         Session::flash('message','Post actualizado');
-        return redirect('/');
+        return "actualizado";
     }
 
     /**

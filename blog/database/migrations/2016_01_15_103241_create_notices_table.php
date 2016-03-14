@@ -18,6 +18,7 @@ class CreateNoticesTable extends Migration
             $table->string('content');
             $table->string('autor');
             $table->string('cate');
+            $table->integer('comment');
             $table->timestamps();
         });
     }

@@ -1,7 +1,8 @@
 {!!Form::open(['route'=>'comment.store','method'=>'POST'])!!}
 	{!!Form::hidden('autor', $notice->autor)!!}
-	{!!FOrm::hidden('imagen', Auth::user()->imagen)!!}
-	{!!Form::hidden('noticia', $notice->id)!!}
+	{!!Form::hidden('imagen', Auth::user()->imagen)!!}
+	{!!Form::hidden('id', $notice->id)!!}
+	{!!Form::hidden('cant', $notice->comment)!!}
 	<div class="form-group">
 		{!!Form::textarea('comentario', null,['class'=>'form-control'])!!}
 	</div>

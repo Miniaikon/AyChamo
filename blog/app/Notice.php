@@ -8,5 +8,5 @@ class Notice extends Model
 {
      protected $table = "notices";
 
-     protected $fillable = ['titulo', 'content', 'autor', 'created_at','cate'];
+     protected $fillable = ['titulo', 'content', 'autor', 'created_at','cate','comment'];
 }

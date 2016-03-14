@@ -18,7 +18,6 @@
 		<h1>{!!link_to_route('notice.show', $title = $notice->titulo, $parameters = [$notice->id,str_replace(" ","-",$notice->titulo)], $attributes = ['style'=>'text-decoration:none;color:#2c3e50;'], $secure = null)!!}</h1>
 		<small><span class="glyphicon glyphicon-user"></span> {{$notice->autor}} | <span class="glyphicon glyphicon-calendar"></span> {{$notice->created_at}} </small> | <span class="glyphicon glyphicon-th-list"></span> {{$notice->cate}}</small><hr>
 		{!!substr($notice->content,0,1000)!!}... <br>
-		{!!link_to_route('notice.show', $title = ' Ver más', $parameters = [$notice->id,str_replace(" ","-",$notice->titulo)], $attributes = ['class'=>'btn btn-default pull-right glyphicon glyphicon-eye-open'], $secure = null)!!}
 		<hr>
 		<footer>  
 		<center>

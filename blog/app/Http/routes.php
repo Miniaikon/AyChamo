@@ -19,6 +19,10 @@ Route::get('video','FrontController@video');
 Route::get('noticia','FrontController@noticia');
 Route::get('resena','FrontController@resena');
 Route::get('otro','FrontController@otro');
+Route::get('uploader','FrontController@uploader');
+
+Route::post('store','FrontController@store');
+Route::get('destroy/{id}','FrontController@destroy');
 
 Route::get('review','FrontController@review');
 

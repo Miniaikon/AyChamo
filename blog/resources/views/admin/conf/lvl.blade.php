@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-	@if(Auth::users()->nivel == 2)
+	@if(Auth::user()->nivel == 2)
 		<article>
 				<h1>Nivelar a: <span style="color:blue;">{!!$users->apodo!!}</span></h1>
 				<h2>Seleccione un nivel para <span style="color:blue;">{!!$users->apodo!!}</span></h2>

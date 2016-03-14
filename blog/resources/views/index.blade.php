@@ -16,9 +16,15 @@
 		@endif
 	@endif
 		<h1>{!!link_to_route('notice.show', $title = $notice->titulo, $parameters = [$notice->id,str_replace(" ","-",$notice->titulo)], $attributes = ['style'=>'text-decoration:none;color:#2c3e50;'], $secure = null)!!}</h1>
-		<small><span class="glyphicon glyphicon-user"></span> {{$notice->autor}} | <span class="glyphicon glyphicon-calendar"></span> {{$notice->created_at}} </small> | <span class="glyphicon glyphicon-th-list"></span> {{$notice->cate}}</small><hr>
+		<small><span class="glyphicon glyphicon-user"></span> {{$notice->autor}} | <span class="glyphicon glyphicon-calendar"></span> {{$notice->created_at}} </small> | <span class="glyphicon glyphicon-th-list"></span> {{$notice->cate}}</small> |
+		@if($notice->comment == 0)
+			<span class="glyphicon glyphicon-comment"></span> Sin comentarios 
+		@else
+		<a style="text-decoration:none;" href="/notice/{{$notice->id}}#comentarios"><span class="glyphicon glyphicon-comment"></span> {{$notice->comment}} Comentarios </a>
+		@endif
+
+		<hr>
 		{!!substr($notice->content,0,1000)!!}...<br>
-		{!!link_to_route('notice.show', $title = ' Ver más', $parameters = [$notice->id,str_replace(" ","-",$notice->titulo)], $attributes = ['class'=>'btn btn-default pull-right'], $secure = null)!!}
 		<br><hr>
 		<footer>  
 		<center>

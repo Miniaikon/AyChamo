@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-	@if(Auth::users()->nivel == 1)
+	@if((Auth::user()->nivel == 1) || (Auth::user()->nivel == 2))
 <article>
 	<table class="table table-hover table-condensed table-bordered table-responsive">
 		<thead>

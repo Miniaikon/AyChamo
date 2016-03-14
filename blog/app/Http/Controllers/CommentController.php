@@ -44,13 +44,21 @@ class CommentController extends Controller
     {
         $comment = new \Blog\Comments;
 
-        $comment->id_noticia = $request->noticia;
+        $comment->id_noticia = $request->id;
         $comment->autor = $request->autor;
         $comment->imagen = $request->imagen;
         $comment->comentario = $request->comentario;
 
         $comment->save();
         Session::flash('message','Comentado');
+
+        $notice = \Blog\Notice::find($request->id);
+        $cantidad = $request->cant + 1;
+
+        $notice->fill([
+            'comment' => $cantidad,
+            ]);
+        $notice->save();
         return back()->withInput();
     }
 
@@ -94,8 +102,17 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        \Blog\Comments::destroy($id);
+        $notice = \Blog\Notice::find($id);
+        $cantidad = $request->cantidad - 1;
+
+        $notice->fill([
+            'comment' => $cantidad,
+            ]);
+        $notice->save();
+        Session::flash('message','Comentario borrado correctamente');
+        return back()->withInput();
     }
 }

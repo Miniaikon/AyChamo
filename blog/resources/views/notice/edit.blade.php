@@ -1,7 +1,7 @@
 @extends('layouts.principal')
 
 @section('content')
-	@if(Auth::users()->nivel == 1)
+	@if(Auth::user()->nivel == 1 || Auth::user()->nivel == 2)
 		@include('alerts.request')
 		{!!Html::script('ckeditor/ckeditor.js')!!}
 		<article>

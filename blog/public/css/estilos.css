@@ -1,0 +1,75 @@
+body{
+	width: 300px;
+	margin: 10px auto;
+	text-align: center;
+}
+
+#preview {
+	width: 171px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	position: relative;
+}
+#preview a{
+	position: absolute;
+	bottom:5px;
+	left: 5px;
+	right: 5px;
+	display: none;
+}
+#file-info{
+	display: block;
+
+}
+input[type=file]{
+	position: absolute;
+	visibility: hidden;
+	width: 0;
+	z-index: -9999;
+}
+#file-save{
+	width: 171px;
+}
+#files-uploaded ul{
+	padding:0;
+}
+#files-uploaded ul li{
+	list-style: none;
+	vertical-align: top;
+	display: inline-block;
+	padding:5px;
+	border: 1px olid lightgray;
+	border-radius: 4px;
+	width: 48%;
+	margin-bottom: 5px;
+	opacity: 0.6;
+	transition: 0.3s linear all;
+	position: relative;
+}
+#files-uploaded ul li:hover{
+	opacity: 1;
+}
+#files-uploaded ul li img{
+	width: 100%;
+}
+#files-uploaded ul li > span{
+	width: 100%;
+	bottom: 0;
+	display: block;
+	color: white;
+	background: rgba(0,0,0,0.5);
+	overflow: hidden;
+}
+#files-uploaded ul li > span a{
+	color: white;
+	margin: 0 8px; 
+}
+#files-uploaded ul li > span a:first-child{
+	float: left;
+}
+#files-uploaded ul li > span a:last-child{
+	float: right;
+}
+.alert {
+	margin-top: 0px;
+}
